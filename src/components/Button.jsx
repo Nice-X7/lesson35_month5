@@ -1,6 +1,4 @@
-import { useState } from "react"
-
-export const Button = ({index, data, setData}) => {
+export const Button = ({index, data, setData, item}) => {
 
     // Add to Basket
     const setBought = (ind) => {
@@ -24,7 +22,15 @@ export const Button = ({index, data, setData}) => {
 
   return (
     <div className='card-button'>
-      <button className='btn' onClick={() => setBought(index)}>Добавить в карзину</button>
+
+      {
+        item.bought ? (
+          <button className="btn" disabled>Добавлено в корзину</button>
+        ) : (
+          <button className='btn' onClick={() => setBought(index)}>Добавить в карзину</button>
+        )
+      }
+      
     </div>
   );
 }

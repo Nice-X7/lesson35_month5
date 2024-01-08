@@ -4,7 +4,6 @@ import { Button } from './Button';
 // Content 
 export const Content = ({data, setData, setBought}) => {
 
-
 // Product
   return (
     <div className='content'>
@@ -18,7 +17,7 @@ export const Content = ({data, setData, setBought}) => {
           <div className="card-info">
             <div className="card-name">{product.name}</div>
             <div className="card-price">{product.price}₽</div>
-            <Button index={index} data={data} setData={setData} setBought={setBought}/>
+            <Button index={index} data={data} setData={setData} setBought={setBought} item={product}/>
           </div>
           
         </div>
