@@ -1,9 +1,6 @@
 // Imports from App
 import { Header } from "./components/Header"
 import { Content } from "./components/Content"
-
-
-// useState
 import { useState } from "react"
 
 // Import images
@@ -18,12 +15,11 @@ import SubCard from "./assets/sub-card-8.jpg"
 import Naushniki from "./assets/nauschniki-card-9.jpg"
 import Video from "./assets/video-carta.png"
 
-
 // App
 export const App = () => {
   const [database, setDatabace] = useState([
     {
-      id: 0,
+      id: 1,
       name: "MacBook",
       price: 100000,
       bought: false,
@@ -31,7 +27,7 @@ export const App = () => {
       image: `${macbook}`
     },
     {
-      id: 1,
+      id: 2,
       name: "Galaxy",
       price: 35999,
       bought: false,
@@ -39,7 +35,7 @@ export const App = () => {
       image: `${Galaxy}`
     },
     {
-      id: 2,
+      id: 3,
       name: "Скутер",
       price: 65500,
       bought: false,
@@ -47,7 +43,7 @@ export const App = () => {
       image: `${Skuter}`
     },
     {
-      id: 3,
+      id: 4,
       name: "Монитор Samsung",
       price: 12000,
       bought: false,
@@ -55,7 +51,7 @@ export const App = () => {
       image: `${SamsungTV}`
     },
     {
-      id: 4,
+      id: 5,
       name: "Респераторная маска",
       price: 500,
       bought: false,
@@ -63,7 +59,7 @@ export const App = () => {
       image: `${Mask}`
     },
     {
-      id: 5,
+      id: 6,
       name: "Стиральная машина",
       price: 100000,
       bought: false,
@@ -71,7 +67,7 @@ export const App = () => {
       image: `${WashMashine}`
     },
     {
-      id: 6,
+      id: 7,
       name: "Белый холодильник",
       price: 43100,
       bought: false,
@@ -79,7 +75,7 @@ export const App = () => {
       image: `${Holodilnik}`
     },
     {
-      id: 7,
+      id: 8,
       name: "Колонка",
       price: 3000,
       bought: false,
@@ -87,7 +83,7 @@ export const App = () => {
       image: `${SubCard}`
     },
     {
-      id: 8,
+      id: 9,
       name: "Наушники",
       price: 1500,
       bought: false,
@@ -95,7 +91,7 @@ export const App = () => {
       image: `${Naushniki}`
     },
     {
-      id: 9,
+      id: 10,
       name: "Видеокарта RTX 3060",
       price: 41000,
       bought: false,
@@ -105,12 +101,31 @@ export const App = () => {
   ])
 
 
+  // Add to Basket
+  const setBought = (ind) => {
+    const addToBasket = database.map((item) => {
+      if (ind === (item.id - 1)) {
+        return {
+          ...item,
+          bought: !item.bought
+        }
+      } else {
+        return item
+      }
+    })
+    setDatabace(addToBasket)
+  }
+
 
   // App omponents
   return (
     <div className="app">
-      <Header data={database} setData={setDatabace} />
-      <Content data={database} setData={setDatabace} />
+      <Header
+        data={database} />
+
+      <Content
+        data={database}
+        setBought={setBought} />
     </div>
   )
 }

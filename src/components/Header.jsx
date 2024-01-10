@@ -8,11 +8,12 @@ import { Checkout } from './Checkout';
 
 // Header
 export const Header = ({data}) => {
+
   return (
     <div className='header'>
       <Logo />
       <Menu />
-      <Checkout data={data}/>
+      <Checkout data={data} />
     </div>
   );
 }

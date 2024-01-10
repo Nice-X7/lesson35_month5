@@ -1,17 +1,19 @@
 import React from 'react';
 import ShoppLogo from "../assets/shopping-cart-solid.svg"
-import { useState } from 'react';
 
 export const Checkout = ({data}) => {
 
-  const [count, setCount] = useState(0)
-
+  const counter = data.filter((item) => {
+    if(item.bought === true) {
+      return item
+    }
+  })
 
   return (
     <>
     <div className='checkout'>
         <img src={ShoppLogo} />
-        <span className='counter'>{count}</span>
+        <span className='counter'>{counter.length}</span>
     </div>
     <a href="#">Выход</a>
     </>
